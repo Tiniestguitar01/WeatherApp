@@ -1,0 +1,46 @@
+<h1 class="d-flex justify-content-center text-light display-1">WeatherApp</h1><br>
+<div class="accordion card bg-light text-black" style="width: 100%;">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid d-flex justify-content-center">
+      <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)" class="d-flex" role="search">
+        <input class=" border-primary bg-transparent form-control me-2" type="search" name="city" id="city" placeholder="Budapest" aria-label="Search" ngModel>
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <img src="{{weatherData.current.condition.icon}}" id="first" class="card-img-top" alt="icon">
+    <div class="card-body" id="headingOne">
+      <h5 class="card-title">{{weatherData.location.name}} / {{weatherData.location.country}} </h5>
+      <p class="card-text lead">Local time: {{weatherData.location.localtime}}<br> Condition: {{weatherData.current.condition.text}}</p>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        More
+      </button>
+    </div>
+    <div class="collapse" id="collapseExample">
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faTemperatureHalf"></fa-icon> Temperature</span><span class="float-end">{{weatherData.current.temp_c}} °C</span></div>
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faWind"></fa-icon> Wind direction</span><span class="float-end">{{weatherData.current.wind_dir}}</span></div>
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faWind"></fa-icon> Wind speed</span><span class="float-end">{{weatherData.current.wind_kph}} km/h</span></div>
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faPaperPlane"></fa-icon> Pressure</span><span class="float-end">{{weatherData.current.pressure_mb}} mb</span></div>
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faDroplet"></fa-icon> Humidity</span><span class="float-end">{{weatherData.current.humidity}}%</span></div>
+    </div>
+
+    <hr>
+
+    <img src="{{weatherData.forecast.forecastday[0].hour[12].condition.icon}}" id="second" class="card-img-top" alt="icon">
+    <div class="card-body" id="headingOne">
+      <h5 class="card-title">{{weatherData.location.name}} / {{weatherData.location.country}} </h5>
+      <p class="card-text lead">Local time: {{weatherData.forecast.forecastday[0].date}}<br> Condition: {{weatherData.forecast.forecastday[0].hour[0].condition.text}}</p>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+        More
+      </button>
+    </div>
+    <div class="collapse" id="collapseExample2">
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faTemperatureHalf"></fa-icon> Temperature</span><span class="float-end">{{weatherData.forecast.forecastday[0].hour[12].temp_c}} °C</span></div>
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faWind"></fa-icon> Wind direction</span><span class="float-end">{{weatherData.forecast.forecastday[0].hour[12].wind_dir}}</span></div>
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faWind"></fa-icon> Wind speed</span><span class="float-end">{{weatherData.forecast.forecastday[0].hour[12].wind_kph}} km/h</span></div>
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faPaperPlane"></fa-icon> Pressure</span><span class="float-end">{{weatherData.forecast.forecastday[0].hour[12].pressure_mb}} mb</span></div>
+      <div style="width: 90%;" class="mx-auto border rounded card-body bg-light border-primary text-black lead"><span><fa-icon style="color:#000000" [icon]="faDroplet"></fa-icon> Humidity</span><span class="float-end">{{weatherData.forecast.forecastday[0].hour[12].humidity}}%</span></div>
+    </div>
+
+</div>
